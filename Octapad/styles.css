@@ -1,0 +1,125 @@
+:root {
+  --bg: #0f172a;
+  --panel: #1e293b;
+  --text: #f8fafc;
+  --glow: #22d3ee;
+  --glow-2: #a78bfa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: radial-gradient(circle at top, #1d4ed8 0%, #0f172a 45%);
+  color: var(--text);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.app {
+  width: min(1050px, 100%);
+  background: color-mix(in hsl, var(--panel), #000 10%);
+  border: 1px solid #334155;
+  border-radius: 1rem;
+  padding: clamp(1rem, 2vw, 2rem);
+  box-shadow: 0 18px 50px rgb(0 0 0 / 0.45);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+header p,
+.hint {
+  color: #cbd5e1;
+}
+
+.kit {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.pad {
+  appearance: none;
+  border: 1px solid #475569;
+  background: linear-gradient(145deg, #334155, #1f2937);
+  color: #fff;
+  border-radius: 1rem;
+  min-height: 145px;
+  padding: 0.9rem;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+  box-shadow: inset 0 -6px 0 rgb(0 0 0 / 0.28);
+}
+
+.pad span {
+  font-size: 0.92rem;
+  color: #bfdbfe;
+  letter-spacing: 0.03em;
+}
+
+.pad strong {
+  font-size: 1.15rem;
+}
+
+.pad small {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  background: rgb(15 23 42 / 0.45);
+  border-radius: 999px;
+  padding: 0.2rem 0.48rem;
+}
+
+.pad:focus-visible {
+  outline: 2px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+.pad.active {
+  transform: translateY(2px) scale(0.985);
+  border-color: var(--glow);
+  background: linear-gradient(145deg, #0ea5e9, #6d28d9);
+  box-shadow:
+    inset 0 -2px 0 rgb(0 0 0 / 0.15),
+    0 0 0 2px rgb(34 211 238 / 0.45),
+    0 0 26px 2px rgb(34 211 238 / 0.75),
+    0 0 44px 8px rgb(167 139 250 / 0.38);
+  animation: pulseGlow 260ms ease-out;
+}
+
+@keyframes pulseGlow {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.25);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+@media (max-width: 900px) {
+  .kit {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .pad {
+    min-height: 125px;
+  }
+}
